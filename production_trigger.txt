@@ -1,0 +1,4 @@
+CREATE TRIGGER `event_id_generator` BEFORE INSERT ON `pdm_production_info`
+ FOR EACH ROW BEGIN
+	SET NEW.production_event_id = CONCAT("PE",(SELECT COUNT(production_event_id) FROM pdm_production_info)+1000+1);
+END
